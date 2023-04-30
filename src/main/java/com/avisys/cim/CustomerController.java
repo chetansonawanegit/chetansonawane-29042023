@@ -87,4 +87,20 @@ public class CustomerController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to create Customer. Mobile number already present.");
 	}
 
+
+
+	// Requirement 3
+	@PutMapping("/addMobileNumber/{id}")
+	public ResponseEntity<?> addMobileNo(@PathVariable Long id ,@RequestBody String mobileNumber)
+	{
+
+		Customer newCustomer = customerService.addMobileNumber(id,mobileNumber);
+		
+		if(newCustomer != null)
+			return Response.success(newCustomer);
+		else
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to Add mobile Number. Mobile number already present.");
+	}
+
+
 }
