@@ -103,4 +103,17 @@ public class CustomerController {
 	}
 
 
+	//Requirement 4
+	@PostMapping("/add/withMobileList")
+	public ResponseEntity<?> addCustomerMobileList(@RequestBody Customer customer)
+	{
+
+		Customer newCustomer = customerService.addCustomer(customer);
+		
+		if(newCustomer != null)
+			return Response.success(newCustomer);
+		else
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to create Customer. Mobile number already present.");
+	}
+
 }
