@@ -3,6 +3,7 @@ package com.avisys.cim;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import org.springframework.http.ResponseEntity;
 
 
@@ -22,4 +23,5 @@ public class Response {
 			map.put("error", err);
 		return ResponseEntity.ok(map);
 	}
+	
 }
