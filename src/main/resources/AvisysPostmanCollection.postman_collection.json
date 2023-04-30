@@ -6,10 +6,202 @@
 	},
 	"item": [
 		{
-			"name": "Requirement_1",
+			"name": "Requirement_1_CustomerSearch",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer/customerInfo/9111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"customerInfo",
+						"9111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement2_AddCutomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"firstName\": \"Adam\",\r\n            \"lastName\": \"Cruise\",\r\n            \"mobileNumber\": \"9111111116\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement4_AddCutomer with Multiple Mobile Numbers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"firstName\": \"Tom\",\r\n            \"lastName\": \"Smith\",\r\n            \"mobileNumber\": [\r\n                 \"9111111117\",\r\n                 \"9111111118\",\r\n                 \"9111111119\"\r\n                  ]\r\n\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/add/withMobileList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"add",
+						"withMobileList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement3_ AddMobile Number",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"mobileNumber\": \"9111111117\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/addMobileNumber/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"addMobileNumber",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement6_ UpdateMobileNumber",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n            \"mobileNumber\": \"9111111112\",\r\n            \"updatemobileNumber\": \"9111111121\"\r\n\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/update/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement5_ DeleteUsingMobileNumber",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/deleteCustomer/9111111114",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"deleteCustomer",
+						"9111111114"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requirement6_ DeleteMobileNumber",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer/delete/9111111114",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer",
+						"delete",
+						"9111111114"
+					]
+				}
 			},
 			"response": []
 		}

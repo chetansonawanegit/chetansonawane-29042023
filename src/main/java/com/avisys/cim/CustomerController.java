@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -132,13 +133,30 @@ public class CustomerController {
 	
 	//Requirement 5
 	
-	@DeleteMapping("/delete/{mobileNumber}")
+	@DeleteMapping("/deleteCustomer/{mobileNumber}")
 	public ResponseEntity<?> DeleteCustomer(@PathVariable String mobileNumber)
 	{
 		int count= customerService.deleteCustomerByMobileNumber(mobileNumber);
 		return Response.success(count);
 	}
 	
+	//Requirement 6
 	
+    @PatchMapping("/update/{id}")  //Update Mobile Number
+    public ResponseEntity<?> EditTrainDeatils(@PathVariable Long id, @RequestBody String mobileNumber , @RequestBody String updatemobileNumber)
+    {
+    	Customer customer = customerService.updateMobileNumber(id, mobileNumber, updatemobileNumber);
+    	
+		if (customer!=null)
+			return Response.success(customer);
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Cannot Update Mobile Number");
+    }
 	
+    
+	@DeleteMapping("/delete/{mobileNumber}") //Delete Mobile Number
+	public ResponseEntity<?> DeleteMobileNumber(@PathVariable String mobileNumber)
+	{
+		int count= customerService.deleteMobileNumber(mobileNumber);
+		return Response.success(count);
+	}
 }

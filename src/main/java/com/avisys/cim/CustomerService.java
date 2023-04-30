@@ -54,4 +54,44 @@ public class CustomerService {
 		return 0;
 	}
 
+// Requirement 6 Update Mobile Number
+	public Customer updateMobileNumber(Long id, String mobileNumber,String updatemobileNumber) {
+		
+		Optional<Customer> customer = customerRepo.findById(id);
+		
+		if(customer.isPresent())
+		{
+			List<String> list = customer.get().getMobileNumber();
+
+			for (String number : list) {
+				if(number.equals(mobileNumber))
+				{
+					number = updatemobileNumber;
+				}
+			}
+			
+			customer.get().setMobileNumber(list);
+			
+			customerRepo.save(customer.get());
+		}
+		
+		return null;
+	}
+
+
+	public int deleteMobileNumber(String mobileNumber) {
+		
+		Customer customer =  customerRepo.findDistinctByMobileNumber(mobileNumber);
+		if(customer != null)
+		{
+			customer.getMobileNumber().remove(mobileNumber);
+			customer.setMobileNumber(customer.getMobileNumber());
+			customerRepo.save(customer);
+			
+			return 1;
+		}
+		
+		return 0;
+	}
+
 }
